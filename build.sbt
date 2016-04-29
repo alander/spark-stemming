@@ -8,7 +8,7 @@ version := "0.1.1"
 
 sparkVersion := "1.6.0"
 
-scalaVersion := "2.10.5"
+scalaVersion := "2.11.8"
 
 spShortDescription := "Spark MLlib wrapper around Snowball stemming"
 

@@ -21,9 +21,10 @@ class Stemmer(override val uid: String) extends UnaryTransformer[String, String,
     val stemClass = Class.forName("org.tartarus.snowball.ext." + $(language).toLowerCase + "Stemmer")
     val stemmer = stemClass.newInstance.asInstanceOf[SnowballStemmer]
     originStr => try {
-      stemmer.setCurrent(originStr)
-      stemmer.stem()
-      stemmer.getCurrent
+      originStr.split(" ").map((word) =>
+        stemmer.setCurrent(word)
+        stemmer.stem()
+        stemmer.getCurrent).mkString(" ")
     } catch {
       case e: Exception => originStr
     }
